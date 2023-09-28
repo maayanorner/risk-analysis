@@ -151,7 +151,7 @@ class Game(object):
         Returns:
             generator: For all player ids in the game.
         """
-        return range(len(self.players))
+        return list(range(len(self.players)))
 
     @property
     def starting_armies(self):

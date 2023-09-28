@@ -133,7 +133,7 @@ territory_locations = {
     41: [1390, 135]}
 
 territory_neighbors_df = pd.DataFrame(
-    [(territory, neighbor) for territory, neighbors in territory_neighbors.items() for neighbor in neighbors],
+    [(territory, neighbor) for territory, neighbors in list(territory_neighbors.items()) for neighbor in neighbors],
     columns=['territory_id', 'neighbor_id']
 )
 
@@ -156,7 +156,7 @@ continent_territories = {
     5: [3, 4, 28, 37]}
 
 territory_continents = {
-    tid: cid for cid, tids in continent_territories.items() for tid in tids
+    tid: cid for cid, tids in list(continent_territories.items()) for tid in tids
     }
 
 player_colors = {

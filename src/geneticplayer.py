@@ -1,6 +1,6 @@
-from missions import TerritoryMission
-from genome import Gene, ListGene, Genome
-from player import SmartPlayer
+from .missions import TerritoryMission
+from .genome import Gene, ListGene, Genome
+from .player import SmartPlayer
 
 
 class GeneticPlayer(Genome, SmartPlayer):
@@ -57,7 +57,7 @@ class GeneticPlayer(Genome, SmartPlayer):
         complete_sets = {set_name: armies for set_name, armies in self.cards.complete_sets}
         if len(complete_sets) == 0:
             return None
-        best_set, armies = max(complete_sets.items(), key=lambda x: x[1])
+        best_set, armies = max(list(complete_sets.items()), key=lambda x: x[1])
         if self.cards.obligatory_turn_in or armies >= self['turn_in_cutoff']:
             return best_set
         return None

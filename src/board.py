@@ -40,7 +40,7 @@ class Board(object):
         Returns:
             Board: A board with territories randomly allocated to the players.
         """
-        allocation = (range(n_players) * 42)[0:42]
+        allocation = (list(range(n_players)) * 42)[0:42]
         random.shuffle(allocation)
         return cls([Territory(territory_id=tid, player_id=pid, armies=1) for tid, pid in enumerate(allocation)])
 
@@ -192,7 +192,7 @@ class Board(object):
         """
         base_reinforcements = max(3, int(self.n_territories(player_id) / 3))
         bonus_reinforcements = 0
-        for continent_id, bonus in definitions.continent_bonuses.items():
+        for continent_id, bonus in list(definitions.continent_bonuses.items()):
             if self.continent_owner(continent_id) == player_id:
                 bonus_reinforcements += bonus
         return base_reinforcements + bonus_reinforcements

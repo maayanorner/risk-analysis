@@ -1,6 +1,6 @@
 import itertools
 import random
-import game
+from . import game
 from trueskill import TrueSkill
 
 
@@ -45,7 +45,7 @@ class TrueskillRanker (object):
         Returns:
             list: Ranked list of tuples (player_id, score), where the first is the best.
         """
-        return sorted(((pid, self.score(pid)) for pid in self.ratings.keys()), key=lambda x: x[1], reverse=True)
+        return sorted(((pid, self.score(pid)) for pid in list(self.ratings.keys())), key=lambda x: x[1], reverse=True)
         
     def score(self, player_id):
         """
@@ -139,7 +139,7 @@ class RiskRanker (TrueskillRanker):
             
     @property
     def player_ids(self):
-        return self.players.keys()
+        return list(self.players.keys())
         
     def player_pools(self):
         """
@@ -153,4 +153,4 @@ class RiskRanker (TrueskillRanker):
         random.shuffle(ids)
         while len(ids) % self.n_players > 0:
             ids.append(random.choice(list(set(ids)-set(ids[-self.n_players:]))))
-        return itertools.izip(*[itertools.islice(ids, i, None, self.n_players) for i in range(self.n_players)])
+        return zip(*[itertools.islice(ids, i, None, self.n_players) for i in range(self.n_players)])

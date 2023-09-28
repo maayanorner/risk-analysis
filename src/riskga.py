@@ -3,7 +3,7 @@ import random
 
 import pandas as pd
 
-from ranker import RiskRanker
+from .ranker import RiskRanker
 
 
 class PlayerPool(object):

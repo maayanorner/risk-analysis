@@ -1,7 +1,7 @@
 import random
 
-import definitions
-import missions
+from . import definitions
+from . import missions
 
 
 class Player(object):
@@ -174,7 +174,7 @@ class Player(object):
         """
         complete_sets = {set_name: armies for set_name, armies in self.cards.complete_sets}
         if len(complete_sets) > 0:
-            return max(complete_sets.items(), key=lambda x: x[1])[0]
+            return max(list(complete_sets.items()), key=lambda x: x[1])[0]
         return None
 
 

@@ -58,7 +58,7 @@ class Cards(object):
         return tuple(
             (set_name, armies) for
             set_name, (card_set, armies) in
-            self.card_sets.items() if
+            list(self.card_sets.items()) if
             self.is_complete(set_name)
         )
 
