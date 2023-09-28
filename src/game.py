@@ -328,7 +328,7 @@ class Game(object):
 
     def plot_turn(self):
         """ Plot the turn. """
-        if self.current_player >= 0:
+        if self.current_player is not None:
             if self.has_ended():
                 color = self.winner().color
                 mission = self.winner().mission.description
