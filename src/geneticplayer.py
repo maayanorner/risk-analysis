@@ -1,6 +1,6 @@
-from .missions import TerritoryMission
-from .genome import Gene, ListGene, Genome
-from .player import SmartPlayer
+from missions import TerritoryMission
+from genome import Gene, ListGene, Genome
+from player import SmartPlayer
 
 
 class GeneticPlayer(Genome, SmartPlayer):

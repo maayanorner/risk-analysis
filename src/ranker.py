@@ -1,6 +1,6 @@
 import itertools
 import random
-from . import game
+import game
 from trueskill import TrueSkill
 
 

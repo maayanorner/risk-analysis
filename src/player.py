@@ -1,7 +1,7 @@
 import random
 
-from . import definitions
-from . import missions
+import definitions
+import missions
 
 
 class Player(object):
